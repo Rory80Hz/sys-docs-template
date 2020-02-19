@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+echo "Run middleman..."
+bundle exec middleman build
+
+cp ./release/heroku-files/index.php build
+cp ./release/heroku-files/.htaccess build
+htpasswd -c .htpasswd sys-docs
+cp .htpasswd build

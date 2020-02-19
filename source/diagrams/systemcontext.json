@@ -1,0 +1,53 @@
+{
+    "type": "System Context",
+    "scope": "POC",
+    "description": "The system context diagram for the POC.",
+    "size": "A5_Landscape",
+  
+  
+    "elements": [
+      {
+        "type": "Person",
+        "name": "BIP user",
+        "description": "BIP officer recording the outcome of checks performed on consignment",
+        "tags": "",
+        "position": "1700,300"
+      },
+      {
+        "type": "Person",
+        "name": "Importer",
+        "description": "Importer submitting import notification for consignment",
+        "tags": "",
+        "position": "400,300"
+      },
+      {
+        "type": "Software System",
+        "name": "POC",
+        "description": "System for preparing import notifications by importers and recording the outcome of consignment checks by BIP inspectors",
+        "tags": "",
+        "position": "1050,1100",
+        "containers": []
+      }
+    ],
+  
+  
+    "relationships": [
+      {
+        "source": "BIP user",
+        "description": "Assess consignment, submit decision, print CVEDP certificate",
+        "technology": "",
+        "destination": "POC",
+        "tags": ""
+      },
+      {
+        "source": "Importer",
+        "description": "Submit import notification, view BIP decision, print CVEDP certificate",
+        "technology": "",
+        "destination": "POC",
+        "tags": ""
+      }
+    ],
+  
+  
+    "styles": []
+  }

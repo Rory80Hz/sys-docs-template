@@ -1,0 +1,110 @@
+{
+  "type": "Container",
+  "scope": "POC",
+  "description": "The container diagram for the POC.",
+  "size": "A5_Landscape",
+
+
+  "elements": [
+    {
+      "type": "Person",
+      "name": "BIP user",
+      "description": "",
+      "tags": "",
+      "position": "1600,50"
+    },
+    {
+      "type": "Person",
+      "name": "Importer",
+      "description": "",
+      "tags": "",
+      "position": "400,50"
+    },
+    {
+      "type": "Software System",
+      "name": "POC",
+      "description": "",
+      "tags": "",
+      "containers": [
+        {
+          "type": "Container",
+          "name": "Decision Service",
+          "description": "Provides REST API for retrieving test rate for selected commodities",
+          "technology": "Dropwizard 1.2.0 on Java 1.8",
+          "tags": "",
+          "position": "1700,850",
+          "components": []
+        },
+        {
+          "type": "Container",
+          "name": "Notification Service",
+          "description": "Provides REST API for fetching, inserting and updating notifications",
+          "technology": "Dropwizard 1.2.0 on Java 1.8",
+          "tags": "",
+          "position": "300,850",
+          "components": []
+        },
+        {
+          "type": "Container",
+          "name": "Relational Database",
+          "description": "Stores notification data",
+          "technology": "Azure SQL",
+          "tags": "",
+          "position": "1000,1200",
+          "components": []
+        },
+        {
+          "type": "Container",
+          "name": "Web Front-end",
+          "description": "Allows users to view import notifications and CVEDP certificates. Allows importer to create and submit new notification. Allows BIP user to assess consignment and submit decision.",
+          "technology": "HAPI 16.5.0 on Node.js 8.9.1",
+          "tags": "",
+          "position": "1000,500",
+          "components": []
+        }
+      ]
+    }
+  ],
+
+
+  "relationships": [
+    {
+      "source": "BIP user",
+      "description": "Uses",
+      "technology": "HTTPS",
+      "destination": "Web Front-end",
+      "tags": ""
+    },
+    {
+      "source": "Importer",
+      "description": "Uses",
+      "technology": "HTTPS",
+      "destination": "Web Front-end",
+      "tags": ""
+    },
+    {
+      "source": "Notification Service",
+      "description": "Queries, Inserts, Updates",
+      "technology": "JDBC, port 1433",
+      "destination": "Relational Database",
+      "tags": ""
+    },
+    {
+      "source": "Web Front-end",
+      "description": "Queries, Inserts, Updates",
+      "technology": "HTTPS, port: 4560",
+      "destination": "Notification Service",
+      "tags": ""
+    },
+    {
+      "source": "Web Front-end",
+      "description": "Queries",
+      "technology": "HTTPS, port: 4660",
+      "destination": "Decision Service",
+      "tags": ""
+    }
+  ],
+
+
+  "styles": []
+}

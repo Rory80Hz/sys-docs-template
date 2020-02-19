@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+cd build
+rm -rf .git
+git init
+heroku git:remote -a sys-docs
+git add .
+git commit -m "deploy site"
+git push --force heroku master
